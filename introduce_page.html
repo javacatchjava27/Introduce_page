@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- 상단바 bootstrap 연동 링크 -->
+    <style>
+        /* 전체 행 넓이 조절 */
+        .line {
+            line-height: 50%;
+        }
+
+        /* 자기소개 박스 안 버튼 조절 */
+        .button {
+            border-radius: 50px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        /* 상단바 Css */
+        .container {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        /* 메인 페이지 이미지 배너 */
+        .main {
+            background-image: url('data:image/jpeg;base64,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');
+            height: 350px;
+        }
+
+        /* 메인 페이지 배너 및 자기소개 글 */
+        .introduce-comment {
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-bottom: 80px;
+        }
+
+        /* 개인 자기소개 박스 */
+        .introduce-boxes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        /* 개인 자기소개 박스 상단 3개 */
+        .top-boxes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        /* 왼쪽 상단 자기소개 박스 */
+        .box1 {
+            border: 1px solid rgb(215, 209, 209);
+            background-clip: border-box;
+            width: 370px;
+            height: 370px;
+            margin-left: 70px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 왼쪽 상단 자기소개 박스 안 글자 넣는 곳 */
+        .b1 {
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+        }
+
+        /* 자기소개 박스 안 이미지  */
+        .profile {
+            position: absolute;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+
+        /* 가운데 자기소개 박스 */
+        .box2 {
+            border: 1px solid rgb(215, 209, 209);
+            background-clip: border-box;
+            width: 370px;
+            height: 370px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 가운데 박스 안 글자 넣는 곳 */
+        .b2 {
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+        }
+
+        /* 오른쪽 상단 자기소개 박스 */
+        .box3 {
+            border: 1px solid rgb(215, 209, 209);
+            background-clip: border-box;
+            width: 370px;
+            height: 370px;
+            margin-right: 70px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 오른쪽 상단 자기소개 박스 글자 넣는 곳 */
+        .b3 {
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+        }
+
+        /* 아래 자기소개 박스 */
+        .bottom-boxes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        /* 왼쪽 하단 자기소개 박스 */
+        .box4 {
+            border: 1px solid rgb(215, 209, 209);
+            background-clip: border-box;
+            width: 550px;
+            height: 250px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-bottom: 30px;
+        }
+
+        .b4 {
+            position: absolute;
+            left: 240px;
+            top: 30px;
+        }
+
+        /* 오른쪽 하단 자기소개 박스 */
+        .box5 {
+            border: 1px solid rgb(215, 209, 209);
+            background-clip: border-box;
+            width: 550px;
+            height: 250px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-top: 100px;
+            margin-right: 100px;
+            margin-bottom: 30px;
+        }
+
+        .b5 {
+            position: absolute;
+            left: 240px;
+            top: 30px;
+        }
+
+        /* 규칙 및 목표 박스 */
+        .bottom-comment {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /* 우리팀 규칙 박스 */
+        .rule {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 50px;
+            margin-left: 100px;
+            margin-bottom: 100px;
+        }
+
+        /* 규칙 박스 텍스트 위치 조절  */
+        .r1 {
+            width: 500px;
+            height: 400px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* 위와 동일 */
+        .r2 {
+
+            margin-top: 50px;
+        }
+
+        /* 목표 박스 */
+        .objective {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 50px;
+            margin-right: 100px;
+            margin-bottom: 100px;
+
+        }
+
+        /* 목표 박스 텍스트 위치 조절 */
+        .o1 {
+            width: 500px;
+            height: 400px;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+
+        }
+
+        .o2 {
+            margin-top: 70px;
+
+        }
+
+        /* 목표 박스 이미지 위치 조절 */
+        .pic {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 상단바 -->
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link">Hello Me : 헬로미👋</a></li> <!-- 상단바 문구 -->
+            </ul>
+        </header>
+    </div>
+    <div class="main">
+        <!-- 메인 페이지 배너 -->
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+            </div>
+        </div>
+    </div>
+    <div class=intro>
+        <!-- 자기소개 -->
+        <div class="introduce-comment">
+            <div class="i1">
+                <h1>팀원 소개👋📖🙋‍♂️📢</h1>
+            </div>
+            <div class="i2">
+                <p>Introducing Our Members</p>
+            </div>
+        </div>
+        <!-- 자기소개 입력 카드 -->
+        <div class="introduce-boxes">
+            <div class="top-boxes">
+                <!-- 왼쪽 첫번째 박스 -->
+                <div class="box1">
+                    <div class="b1">
+                        <h3>자기소개</h3>
+                        <p class="line">팀장</p>
+                        <p class="line">MBTI</p>
+                    </div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAOVBMVEWDwtRVorpzt82EwtZXo7uAwNN+vtFus8lUoLlqsMZ4us5apr1wtsp5u89sssdmrcNkrcJgqcFlr8RBpLsiAAADVUlEQVR4nO3cDZqjIAwGYLGA/Cm19z/sat3uzLTVAqNL0n7vCcgThBDRpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL5OtQfwP6jehWEYuuB6VXssx9EhemnEQvrY6dojOoSLUtyR0dUe1e7a0dyHOTNjW3tku9JRPI1zDjW+0QRu/UqU10j92yR12AjzGmpXe4S7UPZFnBNbe5B7sKuP51tFeuoSwpwM3OulNinMCe8V6aQfioQVxvPeZWJqQoWInCevS49TCM7l4JgT6Fh7tOWyEso5pVkJZZxSvVXiPiG5LrwhL05hQu0RF8rYWxax9ojLqMyZK4Tn2UfSaVXuN4bnQ5q5ucx4bjDJ9fyXwLIM7PID5dlq+JhAE1oo93g2Gj4mo7mF0YRnaVSwvfS1x1xE5wfKs2D4mBLwY4r6/NWI51o0H7zzynq+Hc/Muct15jZNn5VRw/PscpWVUra9sYlLfSMxkYwT2jSX9EB5FvQ36R1Pvkvuwsm0BYn3xJ0lVg1ca4VvbEpKeR5E77y6lDIZao9xH+HFJiPfYN4u3Oba6x3LJudTyq4mVVqmh9AV/fl5nJFn92RLHx8msH/DMGfa2VEuc1hKOVrHvBjacGpUH0LXheDUZ9ytBwAAALg3FUFKad27EMIw2GGujVrXa/VeJxftgo2jv1a5c1/FmOXDCSOkH+MQnOZfDSrdWj+FuNk3kt7blnGBf2rcMP5N4mvmbB3Liaz6wWe8kFjObpbd+VSFzNvXt1jHllNaVVsW5tXIp2fvRpN9g5VhqLrgatxPRlgGa/B2DzeVJ5/UgguAzxhJ+y1FykexqSg3ttUvFttHkWykKvuq2ItIawe0Yu84hbjQzOmOz+cNyQscBddzXyP4RjH3i7s0BO+qXH5V9a261I7rXs4dsRzUruXsv+LeENtND1mJrojd+dy1JPqJVNnQJ16EK0Hqg+iEO1PFSP0E6MCZS+rCcsGnPDnozN2Cr9By0PkxzmGb6ILOuvv8V3h7MWQe0mPq+S9kKvuj6tx/qLyoKPg8P4uhshrt1OJcR+WvBQf0UH6i0lH5mEAP3kbpbKRnYY5FZSPt24PROXufDlY7PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICD/AEvKiX++Pr/wgAAAABJRU5ErkJggg=="
+                        width="175px" height="185px" class="profile" alt="">
+                    <button onclick='alert("클릭!")' class="button">Introduce</button>
+                </div>
+                <!-- 상단 가운데 박스 -->
+                <div class="box2">
+                    <div class="b2">
+                        <h3>자기소개</h3>
+                        <p class="line">팀원</p>
+                        <p class="line">MBTI</p>
+                    </div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAOVBMVEWDwtRVorpzt82EwtZXo7uAwNN+vtFus8lUoLlqsMZ4us5apr1wtsp5u89sssdmrcNkrcJgqcFlr8RBpLsiAAADVUlEQVR4nO3cDZqjIAwGYLGA/Cm19z/sat3uzLTVAqNL0n7vCcgThBDRpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL5OtQfwP6jehWEYuuB6VXssx9EhemnEQvrY6dojOoSLUtyR0dUe1e7a0dyHOTNjW3tku9JRPI1zDjW+0QRu/UqU10j92yR12AjzGmpXe4S7UPZFnBNbe5B7sKuP51tFeuoSwpwM3OulNinMCe8V6aQfioQVxvPeZWJqQoWInCevS49TCM7l4JgT6Fh7tOWyEso5pVkJZZxSvVXiPiG5LrwhL05hQu0RF8rYWxax9ojLqMyZK4Tn2UfSaVXuN4bnQ5q5ucx4bjDJ9fyXwLIM7PID5dlq+JhAE1oo93g2Gj4mo7mF0YRnaVSwvfS1x1xE5wfKs2D4mBLwY4r6/NWI51o0H7zzynq+Hc/Muct15jZNn5VRw/PscpWVUra9sYlLfSMxkYwT2jSX9EB5FvQ36R1Pvkvuwsm0BYn3xJ0lVg1ca4VvbEpKeR5E77y6lDIZao9xH+HFJiPfYN4u3Oba6x3LJudTyq4mVVqmh9AV/fl5nJFn92RLHx8msH/DMGfa2VEuc1hKOVrHvBjacGpUH0LXheDUZ9ytBwAAALg3FUFKad27EMIw2GGujVrXa/VeJxftgo2jv1a5c1/FmOXDCSOkH+MQnOZfDSrdWj+FuNk3kt7blnGBf2rcMP5N4mvmbB3Liaz6wWe8kFjObpbd+VSFzNvXt1jHllNaVVsW5tXIp2fvRpN9g5VhqLrgatxPRlgGa/B2DzeVJ5/UgguAzxhJ+y1FykexqSg3ttUvFttHkWykKvuq2ItIawe0Yu84hbjQzOmOz+cNyQscBddzXyP4RjH3i7s0BO+qXH5V9a261I7rXs4dsRzUruXsv+LeENtND1mJrojd+dy1JPqJVNnQJ16EK0Hqg+iEO1PFSP0E6MCZS+rCcsGnPDnozN2Cr9By0PkxzmGb6ILOuvv8V3h7MWQe0mPq+S9kKvuj6tx/qLyoKPg8P4uhshrt1OJcR+WvBQf0UH6i0lH5mEAP3kbpbKRnYY5FZSPt24PROXufDlY7PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICD/AEvKiX++Pr/wgAAAABJRU5ErkJggg=="
+                        width="175px" height="185px" class="profile" alt="">
+                    <button onclick='alert("클릭!")' class="button">Introduce</button>
+                </div>
+                <!-- 상단 오른쪽 박스 -->
+                <div class="box3">
+                    <div class="b3">
+                        <h3>자기소개</h3>
+                        <p class="line">팀원</p>
+                        <p class="line">MBTI</p>
+                    </div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAOVBMVEWDwtRVorpzt82EwtZXo7uAwNN+vtFus8lUoLlqsMZ4us5apr1wtsp5u89sssdmrcNkrcJgqcFlr8RBpLsiAAADVUlEQVR4nO3cDZqjIAwGYLGA/Cm19z/sat3uzLTVAqNL0n7vCcgThBDRpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL5OtQfwP6jehWEYuuB6VXssx9EhemnEQvrY6dojOoSLUtyR0dUe1e7a0dyHOTNjW3tku9JRPI1zDjW+0QRu/UqU10j92yR12AjzGmpXe4S7UPZFnBNbe5B7sKuP51tFeuoSwpwM3OulNinMCe8V6aQfioQVxvPeZWJqQoWInCevS49TCM7l4JgT6Fh7tOWyEso5pVkJZZxSvVXiPiG5LrwhL05hQu0RF8rYWxax9ojLqMyZK4Tn2UfSaVXuN4bnQ5q5ucx4bjDJ9fyXwLIM7PID5dlq+JhAE1oo93g2Gj4mo7mF0YRnaVSwvfS1x1xE5wfKs2D4mBLwY4r6/NWI51o0H7zzynq+Hc/Muct15jZNn5VRw/PscpWVUra9sYlLfSMxkYwT2jSX9EB5FvQ36R1Pvkvuwsm0BYn3xJ0lVg1ca4VvbEpKeR5E77y6lDIZao9xH+HFJiPfYN4u3Oba6x3LJudTyq4mVVqmh9AV/fl5nJFn92RLHx8msH/DMGfa2VEuc1hKOVrHvBjacGpUH0LXheDUZ9ytBwAAALg3FUFKad27EMIw2GGujVrXa/VeJxftgo2jv1a5c1/FmOXDCSOkH+MQnOZfDSrdWj+FuNk3kt7blnGBf2rcMP5N4mvmbB3Liaz6wWe8kFjObpbd+VSFzNvXt1jHllNaVVsW5tXIp2fvRpN9g5VhqLrgatxPRlgGa/B2DzeVJ5/UgguAzxhJ+y1FykexqSg3ttUvFttHkWykKvuq2ItIawe0Yu84hbjQzOmOz+cNyQscBddzXyP4RjH3i7s0BO+qXH5V9a261I7rXs4dsRzUruXsv+LeENtND1mJrojd+dy1JPqJVNnQJ16EK0Hqg+iEO1PFSP0E6MCZS+rCcsGnPDnozN2Cr9By0PkxzmGb6ILOuvv8V3h7MWQe0mPq+S9kKvuj6tx/qLyoKPg8P4uhshrt1OJcR+WvBQf0UH6i0lH5mEAP3kbpbKRnYY5FZSPt24PROXufDlY7PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICD/AEvKiX++Pr/wgAAAABJRU5ErkJggg=="
+                        width="175px" height="185px" class="profile" alt="">
+                    <button onclick='alert("클릭!")' class="button">Introduce</button>
+                </div>
+            </div>
+            <!-- 하단 박스 -->
+            <div class="bottom-boxes">
+                <!-- 하단 왼쪽 박스 -->
+                <div class="box4">
+                    <div class="b4">
+                        <h3>자기소개</h3>
+                        <p class="line">팀원</p>
+                        <p class="line">MBTI</p>
+                    </div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAOVBMVEWDwtRVorpzt82EwtZXo7uAwNN+vtFus8lUoLlqsMZ4us5apr1wtsp5u89sssdmrcNkrcJgqcFlr8RBpLsiAAADVUlEQVR4nO3cDZqjIAwGYLGA/Cm19z/sat3uzLTVAqNL0n7vCcgThBDRpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL5OtQfwP6jehWEYuuB6VXssx9EhemnEQvrY6dojOoSLUtyR0dUe1e7a0dyHOTNjW3tku9JRPI1zDjW+0QRu/UqU10j92yR12AjzGmpXe4S7UPZFnBNbe5B7sKuP51tFeuoSwpwM3OulNinMCe8V6aQfioQVxvPeZWJqQoWInCevS49TCM7l4JgT6Fh7tOWyEso5pVkJZZxSvVXiPiG5LrwhL05hQu0RF8rYWxax9ojLqMyZK4Tn2UfSaVXuN4bnQ5q5ucx4bjDJ9fyXwLIM7PID5dlq+JhAE1oo93g2Gj4mo7mF0YRnaVSwvfS1x1xE5wfKs2D4mBLwY4r6/NWI51o0H7zzynq+Hc/Muct15jZNn5VRw/PscpWVUra9sYlLfSMxkYwT2jSX9EB5FvQ36R1Pvkvuwsm0BYn3xJ0lVg1ca4VvbEpKeR5E77y6lDIZao9xH+HFJiPfYN4u3Oba6x3LJudTyq4mVVqmh9AV/fl5nJFn92RLHx8msH/DMGfa2VEuc1hKOVrHvBjacGpUH0LXheDUZ9ytBwAAALg3FUFKad27EMIw2GGujVrXa/VeJxftgo2jv1a5c1/FmOXDCSOkH+MQnOZfDSrdWj+FuNk3kt7blnGBf2rcMP5N4mvmbB3Liaz6wWe8kFjObpbd+VSFzNvXt1jHllNaVVsW5tXIp2fvRpN9g5VhqLrgatxPRlgGa/B2DzeVJ5/UgguAzxhJ+y1FykexqSg3ttUvFttHkWykKvuq2ItIawe0Yu84hbjQzOmOz+cNyQscBddzXyP4RjH3i7s0BO+qXH5V9a261I7rXs4dsRzUruXsv+LeENtND1mJrojd+dy1JPqJVNnQJ16EK0Hqg+iEO1PFSP0E6MCZS+rCcsGnPDnozN2Cr9By0PkxzmGb6ILOuvv8V3h7MWQe0mPq+S9kKvuj6tx/qLyoKPg8P4uhshrt1OJcR+WvBQf0UH6i0lH5mEAP3kbpbKRnYY5FZSPt24PROXufDlY7PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICD/AEvKiX++Pr/wgAAAABJRU5ErkJggg=="
+                        width="175px" height="185px" class="profile" alt="">
+                    <button onclick='alert("클릭!")' class="button">Introduce</button>
+                </div>
+                <!-- 하단 오른쪽 박스 -->
+                <div class="box5">
+                    <div class="b5">
+                        <h3>자기소개</h3>
+                        <p class="line">팀원</p>
+                        <p class="line">MBTI</p>
+                    </div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAOVBMVEWDwtRVorpzt82EwtZXo7uAwNN+vtFus8lUoLlqsMZ4us5apr1wtsp5u89sssdmrcNkrcJgqcFlr8RBpLsiAAADVUlEQVR4nO3cDZqjIAwGYLGA/Cm19z/sat3uzLTVAqNL0n7vCcgThBDRpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL5OtQfwP6jehWEYuuB6VXssx9EhemnEQvrY6dojOoSLUtyR0dUe1e7a0dyHOTNjW3tku9JRPI1zDjW+0QRu/UqU10j92yR12AjzGmpXe4S7UPZFnBNbe5B7sKuP51tFeuoSwpwM3OulNinMCe8V6aQfioQVxvPeZWJqQoWInCevS49TCM7l4JgT6Fh7tOWyEso5pVkJZZxSvVXiPiG5LrwhL05hQu0RF8rYWxax9ojLqMyZK4Tn2UfSaVXuN4bnQ5q5ucx4bjDJ9fyXwLIM7PID5dlq+JhAE1oo93g2Gj4mo7mF0YRnaVSwvfS1x1xE5wfKs2D4mBLwY4r6/NWI51o0H7zzynq+Hc/Muct15jZNn5VRw/PscpWVUra9sYlLfSMxkYwT2jSX9EB5FvQ36R1Pvkvuwsm0BYn3xJ0lVg1ca4VvbEpKeR5E77y6lDIZao9xH+HFJiPfYN4u3Oba6x3LJudTyq4mVVqmh9AV/fl5nJFn92RLHx8msH/DMGfa2VEuc1hKOVrHvBjacGpUH0LXheDUZ9ytBwAAALg3FUFKad27EMIw2GGujVrXa/VeJxftgo2jv1a5c1/FmOXDCSOkH+MQnOZfDSrdWj+FuNk3kt7blnGBf2rcMP5N4mvmbB3Liaz6wWe8kFjObpbd+VSFzNvXt1jHllNaVVsW5tXIp2fvRpN9g5VhqLrgatxPRlgGa/B2DzeVJ5/UgguAzxhJ+y1FykexqSg3ttUvFttHkWykKvuq2ItIawe0Yu84hbjQzOmOz+cNyQscBddzXyP4RjH3i7s0BO+qXH5V9a261I7rXs4dsRzUruXsv+LeENtND1mJrojd+dy1JPqJVNnQJ16EK0Hqg+iEO1PFSP0E6MCZS+rCcsGnPDnozN2Cr9By0PkxzmGb6ILOuvv8V3h7MWQe0mPq+S9kKvuj6tx/qLyoKPg8P4uhshrt1OJcR+WvBQf0UH6i0lH5mEAP3kbpbKRnYY5FZSPt24PROXufDlY7PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICD/AEvKiX++Pr/wgAAAABJRU5ErkJggg=="
+                        width="175px" height="185px" class="profile" alt="">
+                    <button onclick='alert("클릭!")' class="button">Introduce</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-comment">
+        <!-- 우리 팀의 규칙 -->
+        <div class="rule">
+            <div class="r1">
+                <h3 style="color: rgb(183, 36, 183); font-weight: bold;">우리 팀의 규칙📄📜📕📢</h2>
+                    <div class="r2">
+                        <p style="color: rgb(204, 204, 26); font-weight: bold;">점심시간 12:00~13:00</p>
+                        <p style="color: rgb(80, 11, 106); font-weight: bold;">저녁시간 18:00~19:00</p>
+                        <p style="color: rgb(36, 159, 183); font-weight: bold;">09:00~11:00 개인공부 시간</p>
+                        <p style="color: rgb(36, 183, 51); font-weight: bold;">13:00 ~ 프로젝트 회의 및 각자 역할에 맞는 코드짜기</p>
+                        <p style="color: rgb(183, 36, 61); font-weight: bold;">모르는 것 있으면 채팅방에 곡 물어보기</p>
+                        <p style="color: rgb(83, 36, 183); font-weight: bold;">TIL 링크 매일 퇴실 전 공유하기</p>
+                        <p style="color: rgb(0, 0, 0); font-weight: bold;">의견 제출 시 확실한 답변 하기</p>
+                    </div>
+            </div>
+        </div>
+        <!-- 우리 팀만의 특징 목표 -->
+        <div class="objective">
+            <div class="o1">
+                <h3 style="font-size: 25px; color: rgb(255, 140, 0);font-weight: bold;">우리 팀만의 특징과 추구하는 궁극적인 목표🎯🏆</h3>
+                <p style="text-align: center; font-size: 27px;color: red;font-weight: bold;"> 🚀💯🚀🎯</p>
+                <div class="o2">
+                    <p style="font-size: 28px;">유능한 개발자 되기👩‍💻⚒️👨‍💻</p>
+                </div>
+                <div class="pic">
+                    <img src="https://media.disquiet.io/images/makerlog/9ac9c1e60e6852699a3af4f147c49a9a04199519c8363372c7ebd3da5497282e"
+                        height="180" width="220" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
